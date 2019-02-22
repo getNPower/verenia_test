@@ -1,0 +1,44 @@
+
+
+<h2>Here are some links to help you start: </h2>
+
+<input type="text" class="form-control" #inputKeyRef >
+
+
+
+<table border="1">
+  <tr class="table_main">
+    <td width="50px">Avatar</td>
+    <td width="200px">Name</td>
+    <td width="80px">Score</td>
+    <td width="350px">Description</td>
+    <td width="80px">Project Link</td>
+    <td width="80px">
+      <select (change)="selectOption($event.target.value)">
+        <option>Language</option>
+        <option *ngFor="let language of filterLanguage;let k=index">{{language}}</option>
+      </select>
+    </td>
+    <td width="100px">Add to favorite</td>
+  </tr>
+  <tr class="table_main" *ngFor="let item of dataView;let j=index">
+    <td width="50px"><img src="{{item['owner']['avatar_url']}}" class="avatar_img"></td>
+    <td width="200px">{{item['name']}}</td>
+    <td width="80px">{{item['score']}}</td>
+    <td width="350px">{{item['description']}}</td>
+    <td width="80px"><a href="{{item['url']}}">Project Link</a></td>
+    <td width="80px">{{item['language']}}</td>
+    <td width="100px"><button (click)="saveElement(item)">Add to favorite</button></td>
+  </tr>
+</table>
+
+<table border="1" class="table_storage">
+
+  <tr *ngFor="let obj of storedProject;let i=index">
+    <td width="50px">{{obj['id']}}</td>
+    <td width="150px">{{obj['name']}}</td>
+    <td width="80px"><a href="{{obj['url']}}">Project Link</a></td>
+    <td width="80px">{{obj['language']}}</td>
+  </tr>
+
+</table>
